@@ -24,5 +24,7 @@ if [ -d $destinationName ] ; then
 fi
 
 mkdir $destinationName
-rsync -ahm --include="/$3" --include='/descriptor.mod' --include='/README.md' --exclude='*.7z' --exclude='/*.*' --exclude='/.*' --exclude='/tutorial' --exclude='*.sh' --exclude='*.ps1' --exclude='*.psd' --exclude='*.py' . $destinationName
+sudo apt-get update && sudo apt-get install imagemagick
+convert $3 thumbnail.png
+rsync -ahm --include="/thumbnail.png" --include='/descriptor.mod' --include='/README.md' --exclude='*.7z' --exclude='/*.*' --exclude='/.*' --exclude='/tutorial' --exclude='*.sh' --exclude='*.ps1' --exclude='*.psd' --exclude='*.py' . $destinationName
 cp -f "$destinationName/descriptor.mod" "$destinationName/../$2.mod"
