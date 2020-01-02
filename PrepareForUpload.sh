@@ -26,5 +26,6 @@ fi
 mkdir $destinationName
 sudo apt-get update && sudo apt-get install imagemagick
 convert $3 thumbnail.png
+sed -i "s/picture=.*//g" "descriptor.mod"
 rsync -ahm --include="/thumbnail.png" --include='/descriptor.mod' --include='/README.md' --exclude='*.7z' --exclude='/*.*' --exclude='/.*' --exclude='/tutorial' --exclude='*.sh' --exclude='*.ps1' --exclude='*.psd' --exclude='*.py' . $destinationName
 cp -f "$destinationName/descriptor.mod" "$destinationName/../$2.mod"
