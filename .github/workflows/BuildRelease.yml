@@ -20,14 +20,13 @@ jobs:
       run: |
         chmod +x ./PrepareForUpload.sh
         ./PrepareForUpload.sh
-        cd ..
         mkdir build
         mv hoi4_mod_test build
         mv hoi4-mod-test.mod build
         cd build
         pwd
         zip -r hoi4-mod-test.zip .
-        mv hoi4-mod-test.zip ../hoi4-mod-test
+        mv hoi4-mod-test.zip ..
     - name: Upload to release
       uses: JasonEtco/upload-to-release@master
       with:
