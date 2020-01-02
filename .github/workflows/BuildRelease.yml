@@ -7,17 +7,17 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    env:
+      STEAM_LOGIN: Equestria_at_War
+      STEAM_PASSWORD: ${{ secrets.STEAMPASSWORD }}
+      PDX_LOGIN: antoni.baum@protonmail.com
+      PDX_PASSWORD: ${{ secrets.PDXPASSWORD }}
+      GOOGLE_API_CREDENTIALS: ${{ secrets.GOOGLEAPICREDENTIALS }}
+      GOOGLE_CLIENT_SECRET: ${{ secrets.GOOGLECLIENTSECRET }}
+      STEAM_SENTRY_FILE_NAME:  ${{ secrets.STEAMSENTRYFILENAME }}
+      STEAM_SENTRY_FILE_HEX: ${{ secrets.STEAMSENTRYFILEHEX }}
     container:
       image: yard1/hoi4_headless
-      env:
-        STEAM_LOGIN: Equestria_at_War
-        STEAM_PASSWORD: ${{ secrets.STEAMPASSWORD }}
-        PDX_LOGIN: antoni.baum@protonmail.com
-        PDX_PASSWORD: ${{ secrets.PDXPASSWORD }}
-        GOOGLE_API_CREDENTIALS: ${{ secrets.GOOGLEAPICREDENTIALS }}
-        GOOGLE_CLIENT_SECRET: ${{ secrets.GOOGLECLIENTSECRET }}
-        STEAM_SENTRY_FILE_NAME:  ${{ secrets.STEAMSENTRYFILENAME }}
-        STEAM_SENTRY_FILE_HEX: ${{ secrets.STEAMSENTRYFILEHEX }}
       volumes:
         - "/var/run/docker.sock:/var/run/docker.sock"
         - "/home/runner/work/_temp/_github_home:/github/home"
@@ -30,6 +30,7 @@ jobs:
         fetch-depth: 1
     - name: Build release through PrepareForUpload.sh
       run: |
+        ls /home/
         chmod +x ./PrepareForUpload.sh
         ./PrepareForUpload.sh
         cd ..
