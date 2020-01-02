@@ -9,8 +9,8 @@ jobs:
     runs-on: ubuntu-latest
     container:
       image: yard1/hoi4_headless
-      volumes:
-        - "/home/runner/work/hoi4-mod-test/hoi4-mod-test/:/home/steam/workspace/"
+      volumes: 
+        - "/home/runner/work/hoi4-mod-test/hoi4-mod-test:/github/workspace"
       options: --shm-size 256M --workdir /github/workspace --rm -u="steam"
     steps:
     - uses: actions/checkout@v1
@@ -20,6 +20,8 @@ jobs:
     - name: Build release through PrepareForUpload.sh
       run: |
         whoami
+        pwd
+        sudo ln /github/workspace /home/steam/workspace
         cd /home/steam/workspace
         sudo chmod +x ./PrepareForUpload.sh
         ./PrepareForUpload.sh
