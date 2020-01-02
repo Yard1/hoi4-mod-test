@@ -21,8 +21,8 @@ jobs:
         chmod +x ./PrepareForUpload.sh
         ./PrepareForUpload.sh
         mkdir build
-        mv hoi4_mod_test build
-        mv hoi4-mod-test.mod build
+        mv ../hoi4_mod_test build
+        mv ../hoi4-mod-test.mod build
         cd build
         pwd
         zip -r hoi4-mod-test.zip .
