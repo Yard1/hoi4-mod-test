@@ -30,3 +30,15 @@ jobs:
         args: hoi4-mod-test.zip application/zip
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    - name: Upload to Steam Workshop
+      uses: Yard1/PDX-Steam-Workshop-Publisher-Action@master
+      with:
+        steamLogin: Equestria_at_War
+        steamPassword: ${{ secrets.STEAMPASSWORD }}
+        PDXLogin: antoni.baum@protonmail.com
+        PDXPassword: ${{ secrets.PDXPASSWORD }}
+        googleAPICredentials: ${{ secrets.GOOGLEAPICREDENTIALS }}
+        googleClientSecret: ${{ secrets.GOOGLECLIENTSECRET }}
+        modPath: "../build"
+        steamSentryFileName:  ${{ secrets.STEAMSENTRYFILENAME }}
+        steamSentryFileHex: ${{ secrets.STEAMSENTRYFILEHEX }}
