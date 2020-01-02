@@ -17,6 +17,7 @@ jobs:
         fetch-depth: 1
     - name: Build release through PrepareForUpload.sh
       run: |
+        set +x
         devDir="hoi4-mod-test"
         destDir="hoi4_mod_test"
         chmod +x ./PrepareForUpload.sh
@@ -25,7 +26,8 @@ jobs:
         mv ../$destDir build
         mv ../"$destDir.mod" build
         cd build
-        pwd
+        sed -i "s/picture=.*//g" "$destDir.mod"
+        cat "$destDir.mod"
         zip -rq "$destDir.zip" .
         mv "$destDir.zip" ..
     - name: Upload to release
