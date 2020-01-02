@@ -25,7 +25,6 @@ fi
 
 mkdir $destinationName
 if [ ! -f "thumbnail.png" ]; then
-    sudo apt-get update && sudo apt-get install imagemagick
     convert $3 thumbnail.png
 fi
 sed -i "s/picture=.*//g" "descriptor.mod"
