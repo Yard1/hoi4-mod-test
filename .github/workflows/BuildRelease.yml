@@ -18,9 +18,10 @@ jobs:
         ./PrepareForUpload.sh
         cd ..
         mkdir build
-        mv equestria build
-        mv equestria.mod build
+        mv hoi4_mod_test build
+        mv hoi4-mod-test.mod build
         cd build
+        pwd
         zip -r hoi4-mod-test.zip .
         mv hoi4-mod-test.zip ../hoi4-mod-test
     - name: Upload to release
