@@ -7,15 +7,6 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-    env:
-      STEAM_LOGIN: Equestria_at_War
-      STEAM_PASSWORD: ${{ secrets.STEAMPASSWORD }}
-      PDX_LOGIN: antoni.baum@protonmail.com
-      PDX_PASSWORD: ${{ secrets.PDXPASSWORD }}
-      GOOGLE_API_CREDENTIALS: ${{ secrets.GOOGLEAPICREDENTIALS }}
-      GOOGLE_CLIENT_SECRET: ${{ secrets.GOOGLECLIENTSECRET }}
-      STEAM_SENTRY_FILE_NAME:  ${{ secrets.STEAMSENTRYFILENAME }}
-      STEAM_SENTRY_FILE_HEX: ${{ secrets.STEAMSENTRYFILEHEX }}
     container:
       image: yard1/hoi4_headless
       volumes:
@@ -31,6 +22,7 @@ jobs:
     - name: Build release through PrepareForUpload.sh
       run: |
         ls /home/
+        echo "$STEAM_LOGIN"
         chmod +x ./PrepareForUpload.sh
         ./PrepareForUpload.sh
         cd ..
@@ -42,6 +34,15 @@ jobs:
         pwd
         zip -r hoi4-mod-test.zip .
         mv hoi4-mod-test.zip ../hoi4-mod-test
+      env:
+        STEAM_LOGIN: Equestria_at_War
+        STEAM_PASSWORD: ${{ secrets.STEAMPASSWORD }}
+        PDX_LOGIN: antoni.baum@protonmail.com
+        PDX_PASSWORD: ${{ secrets.PDXPASSWORD }}
+        GOOGLE_API_CREDENTIALS: ${{ secrets.GOOGLEAPICREDENTIALS }}
+        GOOGLE_CLIENT_SECRET: ${{ secrets.GOOGLECLIENTSECRET }}
+        STEAM_SENTRY_FILE_NAME:  ${{ secrets.STEAMSENTRYFILENAME }}
+        STEAM_SENTRY_FILE_HEX: ${{ secrets.STEAMSENTRYFILEHEX }}
     - name: Upload to release
       uses: JasonEtco/upload-to-release@master
       with:
