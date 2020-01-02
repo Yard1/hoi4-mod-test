@@ -8,7 +8,8 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-    - run: |
+    - name: Configure and reload Docker daemon to allow for bigger shm
+      run: |
         echo '{ "cgroup-parent": "/actions_job", "default-shm-size": "256M" }' | sudo tee /etc/docker/daemon.json
         sudo systemctl reload docker
     - uses: actions/checkout@v1
@@ -42,6 +43,6 @@ jobs:
         PDXPassword: ${{ secrets.PDXPASSWORD }}
         googleAPICredentials: ${{ secrets.GOOGLEAPICREDENTIALS }}
         googleClientSecret: ${{ secrets.GOOGLECLIENTSECRET }}
-        modPath: "../build"
+        modPath: "build"
         steamSentryFileName:  ${{ secrets.STEAMSENTRYFILENAME }}
         steamSentryFileHex: ${{ secrets.STEAMSENTRYFILEHEX }}
