@@ -7,6 +7,22 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    container:
+      image: yard1/hoi4_headless
+      env:
+        STEAM_LOGIN: Equestria_at_War
+        STEAM_PASSWORD: ${{ secrets.STEAMPASSWORD }}
+        PDX_LOGIN: antoni.baum@protonmail.com
+        PDX_PASSWORD: ${{ secrets.PDXPASSWORD }}
+        GOOGLE_API_CREDENTIALS: ${{ secrets.GOOGLEAPICREDENTIALS }}
+        GOOGLE_CLIENT_SECRET: ${{ secrets.GOOGLECLIENTSECRET }}
+        STEAM_SENTRY_FILE_NAME:  ${{ secrets.STEAMSENTRYFILENAME }}
+        STEAM_SENTRY_FILE_HEX: ${{ secrets.STEAMSENTRYFILEHEX }}
+      volumes:
+        - "/var/run/docker.sock:/var/run/docker.sock"
+        - "/home/runner/work/_temp/_github_home:/github/home"
+        - "/home/runner/work/hoi4-mod-test/hoi4-mod-test:/github/workspace"
+      options: --shm-size 256M --workdir /github/workspace --rm
     steps:
     - uses: actions/checkout@v1
       with:
@@ -17,6 +33,7 @@ jobs:
         chmod +x ./PrepareForUpload.sh
         ./PrepareForUpload.sh
         cd ..
+        pwd
         mkdir build
         mv hoi4_mod_test build
         mv hoi4-mod-test.mod build
@@ -30,15 +47,3 @@ jobs:
         args: hoi4-mod-test.zip application/zip
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-    - name: Upload to Steam Workshop
-      uses: Yard1/PDX-Steam-Workshop-Publisher-Action@master
-      with:
-        steamLogin: Equestria_at_War
-        steamPassword: ${{ secrets.STEAMPASSWORD }}
-        PDXLogin: antoni.baum@protonmail.com
-        PDXPassword: ${{ secrets.PDXPASSWORD }}
-        googleAPICredentials: ${{ secrets.GOOGLEAPICREDENTIALS }}
-        googleClientSecret: ${{ secrets.GOOGLECLIENTSECRET }}
-        modPath: "../build"
-        steamSentryFileName:  ${{ secrets.STEAMSENTRYFILENAME }}
-        steamSentryFileHex: ${{ secrets.STEAMSENTRYFILEHEX }}
