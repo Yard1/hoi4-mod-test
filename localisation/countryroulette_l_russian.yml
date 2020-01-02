@@ -1,0 +1,24 @@
+﻿l_russian:
+ countryroulette.1.t:0 "Country Roulette"
+ countryroulette.1.d:0 "Добро пожаловать в мод Country Roulette от Yard1!\n\nВаша страна будет меняться по истечению определённого числа дней. Мод работает с любыми другими модификациями. Важно: Если мод меняет теги самостоятельно, (например, переходит из USA в CSA/AUS в Kaiserreich), то таймер обнулится, и вам потребуется перезапустить Country Roulette через решения.\n\nВы хотите включить Country Roulette?\n\nПеревод на русский сделал AdvRewBros."
+ countryroulette.1.a:0 "Безусловно!"
+ countryroulette.1.b:0 "Не сейчас"
+
+ countryroulette.2.t:0 "Выберите промежуток для Country Roulette"
+ countryroulette.2.t:0 "Country Roulette"
+ countryroulette.2.d:0 "Через сколько дней должна меняться страна?"
+ countryroulette.2.a:0 "Через 720 дней"
+ countryroulette.2.b:0 "Через 360 дней"
+ countryroulette.2.c:0 "Через 180 дней"
+ countryroulette.2.e:0 "Через 30 дней"
+
+ country_roulette_category:0 "Country Roulette"
+
+ country_roulette_on_off:0 "Включить или выключить Country Roulette"
+ country_roulette_days_set:0 "Смена промежутка времени"
+ country_roulette_mission:0 "Смена страны"
+ country_roulette_random_country:0 "Моментально поменять страну"
+ on_roulette:0 " Country Roulette §Yвыключен§!."
+ country_roulette_on:0 "§YВключает§  Country Roulette!.\n"
+ country_roulette_off:0 "§YВыключает§  Country Roulette!.\n"
+ country_roulette_effect:0 "Сменит страну на §Yлюбую другую§!.\n"

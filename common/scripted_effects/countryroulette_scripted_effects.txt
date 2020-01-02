@@ -1,0 +1,28 @@
+randomize_country = {
+    random_country = {
+        limit = { 
+            NOT = { tag = ROOT }
+            check_variable = { random < 0.1 }
+            is_ai = yes 
+            exists = yes
+            OR = {
+                has_war = no
+                surrender_progress < 0.9
+            }
+            if = {
+                limit = {
+                    has_variable = last_country
+                }
+                NOT = { tag = var:last_country }
+            }
+        }
+        set_variable = { roulette_days = ROOT.roulette_days }
+        set_country_flag = on_roulette
+        ROOT = {
+            clear_variable = roulette_days
+            clr_country_flag = on_roulette
+        }
+        change_tag_from = ROOT
+        country_event = countryroulette.3
+    }
+}

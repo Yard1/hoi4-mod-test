@@ -1,0 +1,7 @@
+country_roulette_category = {
+	icon = casino
+	visible = {
+		is_ai = no
+	}
+	priority = 200
+}

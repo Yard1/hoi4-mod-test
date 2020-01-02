@@ -1,0 +1,13 @@
+spriteTypes = {	
+
+	spriteType = {
+		name = "GFX_decision_category_casino"
+		texturefile = "gfx/interface/decisions/decision_category_casino.dds"
+	}
+	
+	spriteType = {
+		name = "GFX_decision_casino"
+		texturefile = "gfx/interface/decisions/decision_casino.dds"
+	}
+	
+}

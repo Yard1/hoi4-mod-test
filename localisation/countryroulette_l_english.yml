@@ -1,0 +1,23 @@
+﻿l_english:
+ countryroulette.1.t:0 "Country Roulette"
+ countryroulette.1.d:0 "Welcome to Country Roulette mod by Yard1!\n\nYour country will be changed to a random one after a set amount of days. This should be compatible with all mods. Note: If the mod changes tags itself (eg. switching from USA to CSA/AUS in Kaiserreich), the timer will reset and you will need to switch Country Roulette on again using the decision.\n\nDo you wish to turn on Country Roulette?"
+ countryroulette.1.a:0 "Absolutely!"
+ countryroulette.1.b:0 "Not this time"
+
+ countryroulette.2.t:0 "Country Roulette Time Period Select"
+ countryroulette.2.d:0 "How many days would you like to have between the country changes?"
+ countryroulette.2.a:0 "720 days"
+ countryroulette.2.b:0 "360 days"
+ countryroulette.2.c:0 "180 days"
+ countryroulette.2.e:0 "30 days"
+
+ country_roulette_category:0 "Country Roulette"
+
+ country_roulette_on_off:0 "Switch Country Roulette on and off"
+ country_roulette_days_set:0 "Set Country Roulette Days"
+ country_roulette_mission:0 "Next Country Change"
+ country_roulette_random_country:0 "Randomize Country"
+ on_roulette:0 "Country Roulette is §Yon§!."
+ country_roulette_on:0 "Switch Country Roulette §Yon§!.\n"
+ country_roulette_off:0 "Switch Country Roulette §Yoff§!.\n"
+ country_roulette_effect:0 "Country changes to §Ya random country§!.\n"

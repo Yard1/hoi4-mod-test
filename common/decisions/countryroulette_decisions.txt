@@ -1,0 +1,67 @@
+country_roulette_category = {
+	
+	country_roulette_on_off = {
+		icon = casino
+		visible = { is_ai = no }
+		cost = 0
+		complete_effect = {
+			if = {
+				limit = { NOT = { has_country_flag = on_roulette } }
+				custom_effect_tooltip = country_roulette_on
+				hidden_effect = {
+					set_country_flag = on_roulette
+					activate_mission = country_roulette_mission
+				}
+			}
+			else = {
+				custom_effect_tooltip = country_roulette_off
+				hidden_effect = {
+					clr_country_flag = on_roulette
+				}
+			}
+		}
+	}
+
+	country_roulette_days_set = {
+		icon = casino
+		visible = { is_ai = no }
+		cost = 0
+		complete_effect = {
+			country_event = countryroulette.2
+		}
+	}
+
+	country_roulette_random_country = {
+		icon = casino
+		visible = { is_ai = no }
+		cost = 0
+        fixed_random_seed = no
+		complete_effect = {
+			custom_effect_tooltip = country_roulette_effect
+			hidden_effect = { randomize_country = yes }
+		}
+	}
+
+	country_roulette_mission = {
+		icon = casino
+        fixed_random_seed = no
+		activation = {
+			is_ai = no 
+			has_country_flag = on_roulette
+		}
+
+		available = {
+			OR = {
+				is_ai = yes
+				NOT = { has_country_flag = on_roulette }
+			}
+		}
+
+		days_mission_timeout = var:roulette_days?360
+		
+		timeout_effect = {
+			custom_effect_tooltip = country_roulette_effect
+			hidden_effect = { randomize_country = yes }
+		}
+	}
+}
