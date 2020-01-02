@@ -44,6 +44,7 @@ jobs:
         modPath: "build"
         steamSentryFileName:  ${{ secrets.STEAMSENTRYFILENAME }}
         steamSentryFileHex: ${{ secrets.STEAMSENTRYFILEHEX }}
+        debugImagePath: images
     - name: Upload artifact
       if: always()
       uses: actions/upload-artifact@v1.0.0
