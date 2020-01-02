@@ -1,0 +1,31 @@
+name: Build Release
+
+on:
+  release:
+    types: [published]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v1
+      with:
+        ref: master
+        fetch-depth: 1
+    - name: Build release through PrepareForUpload.sh
+      run: |
+        chmod +x ./PrepareForUpload.sh
+        ./PrepareForUpload.sh
+        cd ..
+        mkdir build
+        mv equestria build
+        mv equestria.mod build
+        cd build
+        zip -r hoi4-mod-test.zip .
+        mv hoi4-mod-test.zip ../hoi4-mod-test
+    - name: Upload to release
+      uses: JasonEtco/upload-to-release@master
+      with:
+        args: hoi4-mod-test.zip application/zip
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
