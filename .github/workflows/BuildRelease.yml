@@ -26,7 +26,6 @@ jobs:
         mv ../$destDir build
         mv ../"$destDir.mod" build
         cd build
-        sed -i "s/picture=.*//g" "$destDir.mod"
         cat "$destDir.mod"
         zip -rq "$destDir.zip" .
         mv "$destDir.zip" ..
