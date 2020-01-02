@@ -10,8 +10,8 @@ jobs:
     container:
       image: yard1/hoi4_headless
       volumes:
-        - "/home/runner/work/hoi4-mod-test/hoi4-mod-test:/home/steam/workspace"
-      options: --shm-size 256M --rm
+        - "/home/runner/work/hoi4-mod-test/hoi4-mod-test/:/home/steam/workspace/"
+      options: --shm-size 256M --rm -u="steam"
     steps:
     - uses: actions/checkout@v1
       with:
@@ -19,6 +19,7 @@ jobs:
         fetch-depth: 1
     - name: Build release through PrepareForUpload.sh
       run: |
+        whoami
         cd /home/steam/workspace
         sudo chmod +x ./PrepareForUpload.sh
         ./PrepareForUpload.sh
